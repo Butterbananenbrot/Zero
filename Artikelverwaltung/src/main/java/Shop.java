@@ -41,9 +41,12 @@ public class Shop implements Serializable {
 
 
     public Shop() {
-
+    // code aus video
     }
 
+    public List<Artikel> getSortiment() {
+        return baseSortiment;
+    }
 
 
 

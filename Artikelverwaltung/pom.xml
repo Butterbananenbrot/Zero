@@ -71,18 +71,26 @@
       <artifactId>language-de</artifactId>
       <version>6.3</version>
     </dependency>
-
+    <!-- alt
+        <dependency>
+          <groupId>org.apache.derby</groupId>
+          <artifactId>derbyclient</artifactId>
+          <version>10.17.1.0</version>
+        </dependency>
+    -->
+    <!-- neu -->
     <dependency>
-      <groupId>org.apache.derby</groupId>
-      <artifactId>derbyclient</artifactId>
-      <version>10.17.1.0</version>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.28</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>6.2.24.Final</version>
-    </dependency>
 
-  </dependencies>
-</project>
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>6.2.24.Final</version>
+        </dependency>
+
+      </dependencies>
+    </project>
