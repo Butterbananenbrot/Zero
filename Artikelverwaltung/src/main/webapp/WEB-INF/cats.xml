@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cats>
+    <Cat>
+        <name>Toto</name>
+        <age>666</age>
+    </Cat>
+    <Cat>
+        <name>Shadow</name>
+        <age>5</age>
+    </Cat>
+    <Cat>
+        <name>Molly</name>
+        <age>3</age>
+    </Cat>
+    <Cat>
+        <name>Socks</name>
+        <age>1</age>
+    </Cat>
+    <Cat>
+        <name>Ginger</name>
+        <age>4</age>
+    </Cat>
+</Cats>

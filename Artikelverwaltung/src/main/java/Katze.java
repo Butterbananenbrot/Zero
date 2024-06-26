@@ -1,9 +1,15 @@
 import jakarta.inject.Named;
 import java.io.Serializable;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @Named
 public class Katze implements Serializable {
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "age")
     private int alter;
 
     public Katze(String name, int alter) {
@@ -12,8 +18,6 @@ public class Katze implements Serializable {
     }
 
     public Katze() {
-        this.name = "Toto";
-        this.alter = 666;
     }
 
     public String getName() {

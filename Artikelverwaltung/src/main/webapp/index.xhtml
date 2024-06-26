@@ -10,14 +10,8 @@
 <h:body>
     <h1>Like Hero to Zero</h1>
     <br/>
-    <h:outputText value="Direkter Zugriff per UEL" />
     <br/>
-    <h:outputText value="#{katze.name}" />
-    <br/>
-    <h:outputText value="#{katze.alter}" />
-    <br/>
-    <br/>
-    <h:outputText value="Zugriff mittels statischer Liste über Controller" />
+    <h:outputText value="Zugriff auf statische Liste in Java-Klasse über Controller" />
     <br/>
     <h:form>
         <p:dataTable var="data" value="#{katzeController.katzen}">
@@ -26,6 +20,19 @@
             </p:column>
             <p:column headerText="Alter">
                 <h:outputText value="#{data.alter}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    <br/>
+    <br/>
+    <h:outputText value="Zugriff auf XML-Datei mittels Parser" />
+    <h:form>
+        <p:dataTable var="xmlData" value="#{katzeXMLController.katzen}">
+            <p:column headerText="Katze aus XML">
+                <h:outputText value="#{xmlData.name}" />
+            </p:column>
+            <p:column headerText="Alter aus XML">
+                <h:outputText value="#{xmlData.alter}" />
             </p:column>
         </p:dataTable>
     </h:form>
