@@ -4,7 +4,7 @@ import jakarta.inject.Named;
 import java.util.List;
 
 @Named
-@ApplicationScoped
+@ApplicationScoped /** request scoped oder view scoped */
 public class KatzeController {
     private List<Katze> katzen;
 

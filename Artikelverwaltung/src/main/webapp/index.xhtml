@@ -37,6 +37,23 @@
         </p:dataTable>
     </h:form>
 
+    <br/>
+    <br/>
+
+    <!-- Emissionsdaten -->
+    <h:outputText value="XML-Datei mit Emissionsdaten:" />
+    <h:form>
+        <p:dataTable var="countries" value="#{countryController.emissions}">
+            <p:column headerText="Country">
+                <h:outputText value="#{countries.country}" />
+            </p:column>
+            <p:column headerText="CO2 Emission">
+                <h:outputText value="#{countries.emissions}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+
     <p id="fussnote">Work in Progress: <br/> This is a protoype!</p>
 </h:body>
 </html>
