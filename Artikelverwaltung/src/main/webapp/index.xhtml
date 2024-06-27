@@ -11,41 +11,13 @@
     <h1>Like Hero to Zero</h1>
     <br/>
     <br/>
-    <h:outputText value="Zugriff auf statische Liste in Java-Klasse über Controller" />
-    <br/>
-    <h:form>
-        <p:dataTable var="data" value="#{katzeController.katzen}">
-            <p:column headerText="Katze">
-                <h:outputText value="#{data.name}" />
-            </p:column>
-            <p:column headerText="Alter">
-                <h:outputText value="#{data.alter}" />
-            </p:column>
-        </p:dataTable>
-    </h:form>
-    <br/>
-    <br/>
-    <h:outputText value="Zugriff auf XML-Datei mittels Parser" />
-    <h:form>
-        <p:dataTable var="xmlData" value="#{katzeXMLController.katzen}">
-            <p:column headerText="Katze aus XML">
-                <h:outputText value="#{xmlData.name}" />
-            </p:column>
-            <p:column headerText="Alter aus XML">
-                <h:outputText value="#{xmlData.alter}" />
-            </p:column>
-        </p:dataTable>
-    </h:form>
-
-    <br/>
-    <br/>
-
+    <h:outputText value="Willkommen bei Zero!"/>
     <!-- Emissionsdaten -->
-    <h:outputText value="XML-Datei mit Emissionsdaten:" />
+    <h:outputText value="Aufbau eines DataTable mit Datenbankzugriff:" />
     <h:form>
-        <p:dataTable var="countries" value="#{countryController.emissions}">
+        <p:dataTable var="countries" value="#{countryController.countries}" lazy="false" >
             <p:column headerText="Country">
-                <h:outputText value="#{countries.country}" />
+                <h:outputText value="#{countries.name}" />
             </p:column>
             <p:column headerText="CO2 Emission">
                 <h:outputText value="#{countries.emissions}" />

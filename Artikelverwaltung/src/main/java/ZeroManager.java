@@ -21,7 +21,4 @@ public class ZeroManager {
         List<Country> countries = q.getResultList();
         return countries;
     }
-
-
-
 }
