@@ -6,10 +6,10 @@
 <h:head>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
     <title>Zero: Login</title>
-    <meta http-equiv="refresh" content="0;url=index.xhtml"/>
 </h:head>
 <h:body>
     <h1>Zero: Login</h1>
+
     <h:form>
 
         <p>
@@ -32,6 +32,13 @@
         <p class="error"><h:outputText value="#{authenticationController.failureMessage}"/></p>
         <h:commandButton action="#{authenticationController.login}" value="Login"/>
     </h:form>
+    <br/>
+    <br/>
+    <h:outputText value="Click here to return to the main page:"/>
+    <h:form>
+        <h:commandButton value="Go to Index" action="index.xhtml?faces-redirect=true"/>
+    </h:form>
+
     <p id="fussnote">Work in Progress: <br/> This is a protoype!</p>
 </h:body>
 </html>
