@@ -11,23 +11,17 @@
     <h1>Zero: Login</h1>
 
     <h:form>
-
         <p>
             <h:outputLabel value="Benutzername:" for="user"/>
-            <h:inputText id="user" value="#{authenticationController.user}" size="40" required="true">
-                <f:event type="postValidate" listener="#{authenticationController.postValidateUser}"/>
-            </h:inputText>
+            <h:inputText id="user" value="#{authenticationController.scientist}" size="40" required="true"/>
             <h:message for="user" styleClass="error"/>
         </p>
 
         <p>
-
             <h:outputLabel value="Passwort: " for="password"/>
-            <h:inputSecret id="password" value="#{authenticationController.password}" size="40" required="true"
-                           validator="#{authenticationController.validateLogin}"/>
+            <h:inputSecret id="password" value="#{authenticationController.password}" size="40" required="true"/>
             <h:message for="password" styleClass="error"/>
         </p>
-
 
         <p class="error"><h:outputText value="#{authenticationController.failureMessage}"/></p>
         <h:commandButton action="#{authenticationController.login}" value="Login"/>
@@ -39,6 +33,6 @@
         <h:commandButton value="Go to Index" action="index.xhtml?faces-redirect=true"/>
     </h:form>
 
-    <p id="fussnote">Work in Progress: <br/> This is a protoype!</p>
+    <p id="fussnote">Work in Progress: <br/> This is a prototype!</p>
 </h:body>
 </html>

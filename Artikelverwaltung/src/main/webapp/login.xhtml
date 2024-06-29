@@ -14,8 +14,8 @@
 
         <p>
             <h:outputLabel value="Benutzername:" for="user"/>
-            <h:inputText id="user" value="#{authenticationController.user}" size="40" required="true">
-                <f:event type="postValidate" listener="#{authenticationController.postValidateUser}"/>
+            <h:inputText id="user" value="#{authenticationControllerWithHash.user}" size="40" required="true">
+                <f:event type="postValidate" listener="#{authenticationControllerWithHash.postValidateUser}"/>
             </h:inputText>
             <h:message for="user" styleClass="error"/>
         </p>
@@ -23,14 +23,14 @@
         <p>
 
             <h:outputLabel value="Passwort: " for="password"/>
-            <h:inputSecret id="password" value="#{authenticationController.password}" size="40" required="true"
-                           validator="#{authenticationController.validateLogin}"/>
+            <h:inputSecret id="password" value="#{authenticationControllerWithHash.password}" size="40" required="true"
+                           validator="#{authenticationControllerWithHash.validateLogin}"/>
             <h:message for="password" styleClass="error"/>
         </p>
 
 
-        <p class="error"><h:outputText value="#{authenticationController.failureMessage}"/></p>
-        <h:commandButton action="#{authenticationController.login}" value="Login"/>
+        <p class="error"><h:outputText value="#{authenticationControllerWithHash.failureMessage}"/></p>
+        <h:commandButton action="#{authenticationControllerWithHash.login}" value="Login"/>
     </h:form>
     <p id="fussnote">Work in Progress: <br/> This is a protoype!</p>
 </h:body>

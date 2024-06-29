@@ -33,5 +33,32 @@
 
     </persistence-unit>
 
+    <persistence-unit name="onlineshop">
+
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/co2_emissions"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
+            <!-- Automatically export the schema - remove later -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+
+
+            <!-- Echo all executed SQL to console -->
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.highlight_sql" value="true" />
+
+
+
+        </properties>
+
+    </persistence-unit>
 </persistence>
 
