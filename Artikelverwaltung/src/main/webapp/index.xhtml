@@ -15,7 +15,7 @@
     <!-- Emissionsdaten -->
     <h:outputText value="Aufbau eines DataTable mit Datenbankzugriff:" />
     <h:form>
-        <p:dataTable var="countries" value="#{countryController.countries}" lazy="false" >
+        <p:dataTable value="#{countryController.countries}" var="countries"  >
             <p:column headerText="Country">
                 <h:outputText value="#{countries.name}" />
             </p:column>

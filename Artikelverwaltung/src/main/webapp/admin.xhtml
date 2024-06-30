@@ -13,76 +13,42 @@
     <br/>
     <h2>Add or edit data:</h2>
     <br/>
-    <h:form>
-        <p:dataTable var="countries" value="#{countryController.countries}" lazy="false" >
+
+    <h:form id="form">
+        <p:messages id="messages" />
+
+        <p:dataTable value="#{countryController.countries}" var="country" editable="true">
+            <p:ajax event="rowEdit" listener="#{countryController.onRowEdit}" update=":form:messages" />
+
             <p:column headerText="Country">
-                <h:outputText value="#{countries.name}" />
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{country.name}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{country.name}" style="width:100%" />
+                    </f:facet>
+                </p:cellEditor>
             </p:column>
+
             <p:column headerText="CO2 Emission">
-                <h:outputText value="#{countries.emissions}" />
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{country.emissions}" />
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{country.emissions}" style="width:100%" />
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="Edit">
+                <p:rowEditor />
             </p:column>
         </p:dataTable>
     </h:form>
+
     <br/>
-    <h:form>
-        <h:panelGrid columns="3" >
-            <h:commandLink value="zurück" action="#{artikelController.zurueck()}"
-                           rendered="#{artikelController.index gt 0}"/>
-            <h:outputText value=" " rendered="#{artikelController.index == 0}"/>
-            <h:outputText value=" "/>
-
-            <h:outputText rendered="#{artikelController.index == artikelController.maxIndex}" value=" "/>
-            <h:commandLink value="vor" action="#{artikelController.vor()}"
-                           rendered="#{artikelController.index lt artikelController.maxIndex}"/>
-            <h:outputText value=" "/>
-
-
-            <h:outputLabel value="Nr:" for="nr"/>
-            <h:outputText id="nr" value="#{artikelController.artikel.nr}"/>
-            <h:outputText value=""/>
-
-
-            <h:outputLabel value="Name:" for="name"/>
-            <h:inputText id="name" value="#{artikelController.artikel.name}" size="40" required="true"/>
-            <h:message for="name" styleClass="error"/>
-
-            <h:outputLabel value="Beschreibung: " for="text"/>
-            <h:inputText id="text" value="#{artikelController.artikel.text}" size="40"
-                         validator="#{descriptionValidator.check}"/>
-            <h:message for="text" styleClass="error"/>
-
-            <h:outputLabel value="Bild-Datei: " for="bilddatei"/>
-            <p:selectOneMenu value="#{artikelController.artikel.bild}" id="bilddatei">
-                <f:selectItems value="#{artikelController.alleBilder}" var="bild" itemLabel="#{bild}" itemValue="#{bild}"/>
-                <p:ajax event="change" update="bild"/>
-            </p:selectOneMenu>
-            <h:outputText value=""/>
-
-            <h:outputLabel value="Verfügbar ab:" for="verfuegbarAb"/>
-            <p:calendar
-                    id="verfuegbarAb"
-                    value="#{artikelController.artikel.verfuegbarAb}"
-                    datePattern="dd.MM.yyyy"
-                    enableManualInput="true">
-            </p:calendar>
-            <h:outputText value=""/>
-
-
-
-            <h:outputLabel value="Bild: " for="bild"/>
-            <h:graphicImage id="bild" url="#{artikelController.artikel.bild}" width="250em"/>
-            <h:outputText value=""/>
-
-
-        </h:panelGrid>
-        <h:commandButton action="#{artikelController.removeArtikel}" value="Löschen"/>
-        <h:commandLink action="#{authenticationController.logout}" value="Logout"/>
-
-        <h:dataTable value="#{artikelController.artikel.bewertungen}" var="bewertung">
-            <h:column><f:facet name="value">Wert</f:facet><h:outputText value="#{bewertung.wert}"/></h:column>
-            <h:column><f:facet name="text">Text</f:facet> <h:outputText value="#{bewertung.text}"/></h:column>
-        </h:dataTable>
-    </h:form>
     <p id="fussnote">Bitte beachten Sie: <br/> Diese Seite ist nur ein Entwurf!</p>
 </h:body>
 </html>

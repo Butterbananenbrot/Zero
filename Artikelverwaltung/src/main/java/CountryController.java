@@ -1,6 +1,10 @@
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.primefaces.event.RowEditEvent;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,6 +29,11 @@ public class CountryController implements Serializable {
 
     public void setCountries(List<Country> countries) {
         this.countries = countries;
+    }
+    public void onRowEdit(RowEditEvent<Country> event) {
+        Country editedCountry = event.getObject();
+        zeroManager.getCountryDAO().save(editedCountry);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Country Edited", editedCountry.getName()));
     }
 
 }
