@@ -26,7 +26,10 @@
                         <h:outputText value="#{country.name}" />
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText value="#{country.name}" style="width:100%" />
+                        <p:inputText value="#{country.name}" style="width:100%" required="true">
+                            <f:validateLength minimum="2" maximum="50" />  <!-- validator -->
+                        </p:inputText>
+
                     </f:facet>
                 </p:cellEditor>
             </p:column>
@@ -37,7 +40,9 @@
                         <h:outputText value="#{country.emissions}" />
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText value="#{country.emissions}" style="width:100%" />
+                        <p:inputText value="#{country.emissions}" style="width:100%" required="true">
+                            <f:validateDoubleRange minimum="0.0" maximum="100000.0" /> <!-- validator -->
+                        </p:inputText>
                     </f:facet>
                 </p:cellEditor>
             </p:column>
@@ -45,7 +50,27 @@
             <p:column headerText="Edit">
                 <p:rowEditor />
             </p:column>
+            <p:column headerText="Delete">
+                <p:commandButton icon="pi pi-trash" title="Delete" action="#{countryController.deleteCountry(country)}"
+                                 immediate="true" ajax="false"
+                                 onclick="return confirm('Are you sure you want to delete this row?');"/>
+            </p:column>
         </p:dataTable>
+        <br/>
+
+        <h:panelGrid columns="5">
+            <h:outputLabel value="New Country:" for="newName" />
+            <p:inputText id="newName" value="#{countryController.newCountry.name}" required="true" />
+
+            <h:outputLabel value="New CO2 Emissions:" for="newEmissions" />
+            <p:inputText id="newEmissions" value="#{countryController.newCountry.emissions}" required="true" />
+
+            <p:commandButton value="Add New Row" action="#{countryController.addCountry}" ajax="false" />
+        </h:panelGrid>
+    </h:form>
+
+    <h:form>
+        <h:commandButton value="Log out and go to the main page" action="#{authenticationController.logout}" />
     </h:form>
 
     <br/>

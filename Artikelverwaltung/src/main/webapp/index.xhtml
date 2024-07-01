@@ -11,15 +11,16 @@
     <h1>Like Hero to Zero</h1>
     <br/>
     <br/>
-    <h:outputText value="Willkommen bei Zero!"/>
+    <h:outputText value="Welcome to Zero!"/>
+    <br/>
     <!-- Emissionsdaten -->
-    <h:outputText value="Aufbau eines DataTable mit Datenbankzugriff:" />
+    <h:outputText value="Check the latest CO2 emissions data from your country:" />
     <h:form>
         <p:dataTable value="#{countryController.countries}" var="countries"  >
             <p:column headerText="Country">
                 <h:outputText value="#{countries.name}" />
             </p:column>
-            <p:column headerText="CO2 Emission">
+            <p:column headerText="CO2 Emissions">
                 <h:outputText value="#{countries.emissions}" />
             </p:column>
         </p:dataTable>

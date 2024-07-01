@@ -70,6 +70,6 @@ public class AuthenticationController implements Serializable {
 
     public String logout() {
         authenticated = false;
-        return "authentication.xhtml?faces-redirect=true";
+        return "index.xhtml?faces-redirect=true";
     }
 }
