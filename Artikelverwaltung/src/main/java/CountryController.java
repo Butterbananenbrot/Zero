@@ -1,5 +1,3 @@
-import jakarta.annotation.PostConstruct;
-import jakarta.el.MethodExpression;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
@@ -17,7 +15,7 @@ public class CountryController implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Inject
-    private ZeroManager zeroManager;
+    private CountryDAO countryDAO;
 
     List<Country> countries;
     private Country newCountry = new Country(); // temporary store for info when creating new country
@@ -25,7 +23,7 @@ public class CountryController implements Serializable {
 
     public List<Country> getCountries() {
         if (countries == null) {    // delete the internal logic here?
-            countries = zeroManager.getCountries();
+            countries = countryDAO.findAll();
         }
         return countries;
     }
@@ -36,12 +34,12 @@ public class CountryController implements Serializable {
 
     public void onRowEdit(RowEditEvent<Country> event) {
         Country editedCountry = event.getObject();
-        zeroManager.getCountryDAO().edit(editedCountry);
+        countryDAO.edit(editedCountry);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Country Edited", editedCountry.getName()));
     }
 
     public String addCountry() {
-        zeroManager.getCountryDAO().saveNewCountry(newCountry);
+        countryDAO.saveNewCountry(newCountry);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Country Added", newCountry.getName()));
         newCountry = new Country(); // reset the temp attribute
         return "admin.xhtml?faces-redirect=true"; // Redirect to the same page to refresh the list
@@ -49,7 +47,7 @@ public class CountryController implements Serializable {
 
     public String deleteCountry(Country country) {
         try {
-            zeroManager.getCountryDAO().delete(country); // Assume there's a method in DAO to handle deletion
+            countryDAO.delete(country); // Assume there's a method in DAO to handle deletion
             countries.remove(country); // Remove from the list to update UI
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Country deleted", null));
         } catch (Exception e) {

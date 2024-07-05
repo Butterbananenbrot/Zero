@@ -18,8 +18,10 @@
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
-            <!-- Automatically export the schema - remove later -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+            <!-- Disable automatic schema generation by JPA -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none" />
+            <!-- Enable schema update by Hibernate -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
 
 
             <!-- Echo all executed SQL to console -->
