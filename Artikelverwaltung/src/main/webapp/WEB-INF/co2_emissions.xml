@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.1
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Jul 06, 2024 at 07:50 PM
+- Server version: 10.4.32-MariaDB
+- PHP Version: 8.2.12
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="co2_emissions" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="artikel">
+                CREATE TABLE `artikel` (
+                  `nr` int(11) NOT NULL,
+                  `verfuegbarAb` datetime(6) DEFAULT NULL,
+                  `DTYPE` varchar(31) NOT NULL,
+                  `bild` varchar(255) DEFAULT NULL,
+                  `name` varchar(255) DEFAULT NULL,
+                  `text` varchar(255) DEFAULT NULL,
+                  `trailer` varchar(255) DEFAULT NULL,
+                  PRIMARY KEY (`nr`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="artikel_bewertung">
+                CREATE TABLE `artikel_bewertung` (
+                  `Artikel_nr` int(11) NOT NULL,
+                  `bewertungen_id` int(11) NOT NULL,
+                  UNIQUE KEY `UK_nqxeyaigdvecvwcc3ygnnwds6` (`bewertungen_id`),
+                  KEY `FKo7n1rsa94u4xei9r4dutuvncc` (`Artikel_nr`),
+                  CONSTRAINT `FK71r3i50p997882tm2sfiyeufe` FOREIGN KEY (`bewertungen_id`) REFERENCES `bewertung` (`id`),
+                  CONSTRAINT `FKo7n1rsa94u4xei9r4dutuvncc` FOREIGN KEY (`Artikel_nr`) REFERENCES `artikel` (`nr`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="artikel_seq">
+                CREATE TABLE `artikel_seq` (
+                  `next_val` bigint(20) DEFAULT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="bewertung">
+                CREATE TABLE `bewertung` (
+                  `id` int(11) NOT NULL,
+                  `wert` double NOT NULL,
+                  `text` varchar(255) DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="bewertung_seq">
+                CREATE TABLE `bewertung_seq` (
+                  `next_val` bigint(20) DEFAULT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="country">
+                CREATE TABLE `country` (
+                  `emissions` double NOT NULL,
+                  `nr` int(11) NOT NULL,
+                  `name` varchar(255) DEFAULT NULL,
+                  PRIMARY KEY (`nr`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="country_seq">
+                CREATE TABLE `country_seq` (
+                  `next_val` bigint(20) DEFAULT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+            <pma:table name="emissions">
+                CREATE TABLE `emissions` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `country` varchar(50) DEFAULT NULL,
+                  `co2_emission` decimal(10,2) DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'co2_emissions'
+    -->
+    <database name="co2_emissions">
+        <!-- Table artikel -->
+        <table name="artikel">
+            <column name="nr">1</column>
+            <column name="verfuegbarAb">2012-12-23 00:00:00.000000</column>
+            <column name="DTYPE">Artikel</column>
+            <column name="bild">filzschuhe.jpg</column>
+            <column name="name">Pantoffeln &quot;Rudolph&quot;</column>
+            <column name="text">Wunderschöne Filzpantoffeln, in beige Farbe mit einem braunen und schwarzen Kringel. Sehr angenehm für kalte Wintertage.</column>
+            <column name="trailer">NULL</column>
+        </table>
+        <table name="artikel">
+            <column name="nr">2</column>
+            <column name="verfuegbarAb">2010-11-03 00:00:00.000000</column>
+            <column name="DTYPE">Artikel</column>
+            <column name="bild">handtasche.jpg</column>
+            <column name="name">Handtasche &quot;Cosmopolita&quot;</column>
+            <column name="text">Modische Filz-Handtasche mit praktischer Cocktailglas-Halterung. Irgendwie kommen wir nie aus dem Haus ohne solchen nützlichen Accessoire.</column>
+            <column name="trailer">NULL</column>
+        </table>
+        <table name="artikel">
+            <column name="nr">3</column>
+            <column name="verfuegbarAb">2013-12-31 00:00:00.000000</column>
+            <column name="DTYPE">Artikel</column>
+            <column name="bild">hase.jpg</column>
+            <column name="name">Filz-Hase &quot;Moe&quot;</column>
+            <column name="text">Ein putziger Hase aus Filz zur Dekoration. Er lässt sich gern am Rand seines Büros stellen, um Mut zu geben.</column>
+            <column name="trailer">NULL</column>
+        </table>
+        <table name="artikel">
+            <column name="nr">4</column>
+            <column name="verfuegbarAb">1970-01-01 01:00:00.000000</column>
+            <column name="DTYPE">Film</column>
+            <column name="bild">laurence.png</column>
+            <column name="name">Laurence d&#039;Arabie</column>
+            <column name="text">Wahnsinnige langes und spannendes Film. Ich verspreche es Ihnen. Aber wirklich.</column>
+            <column name="trailer">laurence-trailer.mp4</column>
+        </table>
+        <!-- Table artikel_bewertung -->
+        <!-- Table artikel_seq -->
+        <table name="artikel_seq">
+            <column name="next_val">101</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="artikel_seq">
+            <column name="next_val">1</column>
+        </table>
+        <!-- Table bewertung -->
+        <!-- Table bewertung_seq -->
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="bewertung_seq">
+            <column name="next_val">1</column>
+        </table>
+        <!-- Table country -->
+        <table name="country">
+            <column name="emissions">3230</column>
+            <column name="nr">1</column>
+            <column name="name">Germany</column>
+        </table>
+        <table name="country">
+            <column name="emissions">7200.3</column>
+            <column name="nr">2</column>
+            <column name="name">USA</column>
+        </table>
+        <table name="country">
+            <column name="emissions">9020.1</column>
+            <column name="nr">3</column>
+            <column name="name">China</column>
+        </table>
+        <table name="country">
+            <column name="emissions">2476.7</column>
+            <column name="nr">5</column>
+            <column name="name">Austria</column>
+        </table>
+        <table name="country">
+            <column name="emissions">432</column>
+            <column name="nr">7</column>
+            <column name="name">Belgium</column>
+        </table>
+        <table name="country">
+            <column name="emissions">2423.4</column>
+            <column name="nr">8</column>
+            <column name="name">Sweden</column>
+        </table>
+        <table name="country">
+            <column name="emissions">3424.1</column>
+            <column name="nr">10</column>
+            <column name="name">France</column>
+        </table>
+        <table name="country">
+            <column name="emissions">143.7</column>
+            <column name="nr">12</column>
+            <column name="name">Iceland</column>
+        </table>
+        <table name="country">
+            <column name="emissions">5320.6</column>
+            <column name="nr">13</column>
+            <column name="name">India</column>
+        </table>
+        <table name="country">
+            <column name="emissions">423.6</column>
+            <column name="nr">15</column>
+            <column name="name">Czechia</column>
+        </table>
+        <!-- Table country_seq -->
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <table name="country_seq">
+            <column name="next_val">1</column>
+        </table>
+        <!-- Table emissions -->
+        <table name="emissions">
+            <column name="id">1</column>
+            <column name="country">Germany</column>
+            <column name="co2_emission">800.50</column>
+        </table>
+        <table name="emissions">
+            <column name="id">2</column>
+            <column name="country">USA</column>
+            <column name="co2_emission">5000.75</column>
+        </table>
+        <table name="emissions">
+            <column name="id">3</column>
+            <column name="country">China</column>
+            <column name="co2_emission">10000.90</column>
+        </table>
+    </database>
+</pma_xml_export>

@@ -1,6 +1,3 @@
-
-
-
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.application.NavigationHandler;

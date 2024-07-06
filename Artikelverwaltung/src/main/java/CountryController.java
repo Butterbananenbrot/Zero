@@ -12,8 +12,6 @@ import java.util.List;
 @ViewScoped
 public class CountryController implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     @Inject
     private CountryDAO countryDAO;
 

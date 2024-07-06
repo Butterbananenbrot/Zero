@@ -8,9 +8,6 @@ import java.util.List;
 @ApplicationScoped
 public class CountryDAO {
 
-//    @PersistenceContext(unitName = "ZeroPU")
-//    private EntityManager em;
-
     private final static EntityManagerFactory emf
             = jakarta.persistence.Persistence.createEntityManagerFactory("ZeroPU");
 
