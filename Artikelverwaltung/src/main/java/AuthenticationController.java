@@ -55,7 +55,9 @@ public class AuthenticationController implements Serializable {
             return "admin.xhtml?faces-redirect=true";
         } else {
             failureMessage = "Invalid username or password.";
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login Failed", "Invalid username or password."));
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                            "Login Failed", "Invalid username or password."));
             return null;
         }
     }
