@@ -28,7 +28,7 @@ public class CountryDAO {
     public List<Country> findAll() {
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("SELECT c FROM Country c");
-        List<Country> countries = q.getResultList();
+        List<Country> countries =q.getResultList();
         em.close();
         return countries;
     }

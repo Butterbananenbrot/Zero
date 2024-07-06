@@ -10,7 +10,6 @@ import java.util.Map;
 @Named
 @SessionScoped
 public class AuthenticationController implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     private String scientist;
     private String password;
